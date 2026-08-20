@@ -17,7 +17,7 @@ Before running the script, ensure you have Python installed:
 ### Step 1: Clone the Repository
 Open your terminal or PowerShell and run:
 ```bash
-git clone [https://github.com/YOUR-USERNAME/blade-simulator.git](https://github.com/YOUR-USERNAME/blade-simulator.git)
+git clone (https://github.com/YOUR-USERNAME/blade-simulator.git)
 cd blade-simulator
 Step 2: Install Dependencies
 Install the required rich library:
