@@ -1,10 +1,10 @@
-Set-Content -Path "main.py" -Value 'import random
+import random
 import time
 from concurrent.futures import ThreadPoolExecutor
 from rich.console import Console, Group
 from rich.live import Live
 from rich.panel import Panel
-from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn, TotalStepsColumn
+from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 from rich.text import Text
 
@@ -28,6 +28,7 @@ SWORD_ART = r"""
           \/
 """
 
+
 def build_status_table(target: str, threads: int, completed: int, bandwidth_mbps: float) -> Table:
     table = Table(
         title="[bold bright_cyan]⚔️ LIVE TRAFFIC INJECTION SIMULATOR ⚔️[/bold bright_cyan]",
@@ -44,6 +45,7 @@ def build_status_table(target: str, threads: int, completed: int, bandwidth_mbps
     table.add_row("📊 BANDWIDTH SIMULATED", f"[bold bright_cyan]{bandwidth_mbps:.2f} Mbps[/bold bright_cyan]")
     table.add_row("🛡️ STATUS", "[bold blink gold1]INJECTING... (0 REAL PACKETS)[/bold blink gold1]")
     return table
+
 
 def main():
     console.clear()
@@ -84,7 +86,7 @@ def main():
         TextColumn("[bold gold1]{task.description}"),
         BarColumn(bar_width=None, complete_style="bold green", finished_style="bold bright_green"),
         TextColumn("[bold yellow]{task.percentage:>3.0f}%"),
-        TotalStepsColumn(),
+        TextColumn("[bold cyan]({task.completed}/{task.total})"),
     )
     task_id = progress.add_task("Injecting payloads...", total=threads)
 
@@ -125,5 +127,6 @@ def main():
         )
     )
 
+
 if __name__ == "__main__":
-    main()'
+    main()
